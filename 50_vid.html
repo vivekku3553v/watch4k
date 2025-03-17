@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>50x YouTube MultiPlayer</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .controls {
+            text-align: center;
+            margin-bottom: 20px;
+            position: sticky;
+            top: 0;
+            background: #1a1a1a;
+            z-index: 100;
+            padding: 15px 0;
+        }
+
+        #videoUrl {
+            width: 70%;
+            padding: 12px;
+            margin: 10px;
+            border-radius: 25px;
+            border: 2px solid #ff0000;
+            background: #333;
+            color: white;
+        }
+
+        #quality {
+            padding: 10px;
+            border-radius: 25px;
+            background: #ff0000;
+            color: white;
+            border: none;
+            margin-left: 10px;
+        }
+
+        .players-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .player-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .player-frame {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        @media (max-width: 768px) {
+            .players-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            #videoUrl {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="controls">
+            <input type="text" id="videoUrl" 
+                   placeholder="YouTube Video Link Paste करें...">
+            <select id="quality">
+                <option value="default">Default Quality</option>
+                <option value="hd1080">1080p</option>
+                <option value="hd720">720p</option>
+                <option value="large">480p</option>
+                <option value="medium">360p</option>
+                <option value="small">240p</option>
+            </select>
+            <button onclick="initializePlayers()">Start</button>
+        </div>
+        <div class="players-grid" id="playersContainer"></div>
+    </div>
+
+    <script>
+        let players = [];
+        let currentVideoId = '';
+        let currentQuality = 'default';
+
+        function extractVideoId(url) {
+            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+            const match = url.match(regExp);
+            return (match && match[2].length === 11) ? match[2] : null;
+        }
+
+        function createPlayer(videoId) {
+            const playerDiv = document.createElement('div');
+            playerDiv.className = 'player-wrapper';
+            const iframe = document.createElement('iframe');
+            iframe.className = 'player-frame';
+            iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&playsinline=1&rel=0&controls=1&modestbranding=1`;
+            playerDiv.appendChild(iframe);
+            return playerDiv;
+        }
+
+        function initializePlayers() {
+            const videoUrl = document.getElementById('videoUrl').value;
+            currentVideoId = extractVideoId(videoUrl);
+            currentQuality = document.getElementById('quality').value;
+            
+            if(!currentVideoId) {
+                alert('कृपया सही YouTube लिंक डालें!');
+                return;
+            }
+
+            const container = document.getElementById('playersContainer');
+            container.innerHTML = '';
+            players = [];
+
+            // Create 50 players
+            for(let i = 0; i < 50; i++) {
+                const player = createPlayer(currentVideoId);
+                container.appendChild(player);
+                players.push(player);
+            }
+
+            // Set quality for all players
+            setTimeout(() => setQualityForAll(currentQuality), 2000);
+        }
+
+        function setQualityForAll(quality) {
+            players.forEach((player, index) => {
+                const iframe = player.querySelector('iframe');
+                if(iframe) {
+                    const src = new URL(iframe.src);
+                    src.searchParams.set('vq', quality);
+                    iframe.src = src.toString();
+                }
+            });
+        }
+
+        // Quality change handler
+        document.getElementById('quality').addEventListener('change', function() {
+            currentQuality = this.value;
+            setQualityForAll(currentQuality);
+        });
+
+        // Enter key support
+        document.getElementById('videoUrl').addEventListener('keypress', function(e) {
+            if(e.key === 'Enter') initializePlayers();
+        });
+    </script>
+</body>
+</html>
