@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>नियम और शर्तें - Video Hub</title>
+    <style>
+        /* Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            line-height: 1.8;
+        }
+
+        /* Header Styles */
+        .header {
+            background: #111;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            color: #ff4444;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Main Content */
+        .terms-container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .terms-hero {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+            border-radius: 12px;
+        }
+
+        .terms-hero h1 {
+            color: #ff4444;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Terms Sections */
+        .term-section {
+            background: #1a1a1a;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .section-title {
+            color: #ff4444;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            border-bottom: 2px solid #ff4444;
+            padding-bottom: 0.5rem;
+        }
+
+        .terms-list {
+            list-style-type: none;
+            padding-left: 1.5rem;
+        }
+
+        .terms-list li {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .terms-list li::before {
+            content: "•";
+            color: #ff4444;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .highlight {
+            color: #ff4444;
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .terms-container {
+                padding: 0 1rem;
+            }
+            
+            .terms-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .term-section {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .terms-list li {
+                font-size: 0.95rem;
+            }
+            
+            .section-title {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: #111;
+            padding: 2rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .footer p {
+            color: #666;
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">VideoHub</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="terms-container">
+        <div class="terms-hero">
+            <h1>नियम और शर्तें</h1>
+            <p>अंतिम अपडेट: 15 अगस्त 2024</p>
+        </div>
+
+        <!-- Acceptance Section -->
+        <div class="term-section">
+            <h2 class="section-title">सेवा का उपयोग</h2>
+            <ul class="terms-list">
+                <li>सेवा का उपयोग करके आप इन नियमों से सहमत होते हैं</li>
+                <li>केवल 18+ उपयोगकर्ता सेवा का उपयोग कर सकते हैं</li>
+                <li>अवैध गतिविधियों पर प्रतिबंध</li>
+            </ul>
+        </div>
+
+        <!-- User Responsibilities -->
+        <div class="term-section">
+            <h2 class="section-title">उपयोगकर्ता जिम्मेदारियां</h2>
+            <ul class="terms-list">
+                <li>सटीक जानकारी प्रदान करना</li>
+                <li>अकाउंट सुरक्षा की जिम्मेदारी</li>
+                <li>कॉपीराइट उल्लंघन न करना</li>
+                <li>स्पैम या दुर्भावनापूर्ण सामग्री पोस्ट न करना</li>
+            </ul>
+        </div>
+
+        <!-- Payments Section -->
+        <div class="term-section">
+            <h2 class="section-title">भुगतान नीति</h2>
+            <ul class="terms-list">
+                <li>सभी भुगतान अंतिम और गैर-वापसी योग्य</li>
+                <li>कीमतें बिना सूचना के बदलने का अधिकार</li>
+                <li>करों का उत्तरदायित्व उपयोगकर्ता का</li>
+            </ul>
+        </div>
+
+        <!-- Termination -->
+        <div class="term-section">
+            <h2 class="section-title">सेवा समाप्ति</h2>
+            <ul class="terms-list">
+                <li>नियम भंग करने पर अकाउंट निलंबन/समाप्ति</li>
+                <li>30 दिनों का नोटिस अवधि</li>
+                <li>अस्थायी या स्थायी बंदी का अधिकार</li>
+            </ul>
+        </div>
+
+        <!-- Governing Law -->
+        <div class="term-section">
+            <h2 class="section-title">कानूनी प्रावधान</h2>
+            <ul class="terms-list">
+                <li>भारतीय कानून के अधीन</li>
+                <li>विवाद हल करने के लिए मध्यस्थता</li>
+                <li>देय स्थान: मुंबई, भारत</li>
+            </ul>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="term-section" style="background: #2a2a2a;">
+            <h2 class="section-title">संपर्क जानकारी</h2>
+            <p>प्रश्न या स्पष्टीकरण के लिए:</p>
+            <p>ईमेल: <a href="mailto:legal@videohub.com" style="color: #ff4444; text-decoration: none;">legal@videohub.com</a></p>
+            <p>पता: 123 टेक पार्क, मुंबई</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2024 VideoHub. सर्वाधिकार सुरक्षित</p>
+        <p>नियम समय-समय पर अपडेट किए जा सकते हैं</p>
+    </footer>
+</body>
+</html>
