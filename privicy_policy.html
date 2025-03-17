@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>गोपनीयता नीति - Video Hub</title>
+    <style>
+        /* Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            line-height: 1.8;
+        }
+
+        /* Header Styles */
+        .header {
+            background: #111;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            color: #ff4444;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Main Content */
+        .privacy-container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .privacy-hero {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+            border-radius: 12px;
+        }
+
+        .privacy-hero h1 {
+            color: #ff4444;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Policy Sections */
+        .policy-section {
+            background: #1a1a1a;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .section-title {
+            color: #ff4444;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            border-bottom: 2px solid #ff4444;
+            padding-bottom: 0.5rem;
+        }
+
+        .policy-list {
+            list-style-type: none;
+            padding-left: 1.5rem;
+        }
+
+        .policy-list li {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .policy-list li::before {
+            content: "•";
+            color: #ff4444;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .highlight {
+            color: #ff4444;
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .privacy-container {
+                padding: 0 1rem;
+            }
+            
+            .privacy-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .policy-section {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .policy-list li {
+                font-size: 0.95rem;
+            }
+            
+            .section-title {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: #111;
+            padding: 2rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .footer p {
+            color: #666;
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">VideoHub</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="privacy-container">
+        <div class="privacy-hero">
+            <h1>गोपनीयता नीति</h1>
+            <p>अंतिम अपडेट: 15 अगस्त 2024</p>
+        </div>
+
+        <!-- Information Collection -->
+        <div class="policy-section">
+            <h2 class="section-title">जानकारी एकत्रीकरण</h2>
+            <ul class="policy-list">
+                <li>हम निम्न प्रकार की जानकारी एकत्र कर सकते हैं:
+                    <ul class="policy-list">
+                        <li>प्रोफ़ाइल जानकारी (नाम, ईमेल, फोन नंबर)</li>
+                        <li>उपयोग डेटा (आईपी एड्रेस, ब्राउज़र प्रकार)</li>
+                        <li>कुकीज़ और उपयोग डेटा</li>
+                    </ul>
+                </li>
+                <li>डेटा संग्रह का उद्देश्य <span class="highlight">सेवा सुधार</span> और <span class="highlight">व्यक्तिगत अनुभव</span> प्रदान करना है</li>
+            </ul>
+        </div>
+
+        <!-- Data Usage -->
+        <div class="policy-section">
+            <h2 class="section-title">डेटा उपयोग</h2>
+            <ul class="policy-list">
+                <li>सेवाओं का प्रबंधन और बनाए रखना</li>
+                <li>उपयोगकर्ता अनुभव का अनुकूलन</li>
+                <li>सुरक्षा और धोखाधड़ी रोकथाम</li>
+                <li>कानूनी आवश्यकताओं का पालन</li>
+            </ul>
+        </div>
+
+        <!-- Data Sharing -->
+        <div class="policy-section">
+            <h2 class="section-title">डेटा साझाकरण</h2>
+            <ul class="policy-list">
+                <li>कानूनी आवश्यकताओं के तहत ही तीसरे पक्ष के साथ साझा</li>
+                <li>सेवा प्रदाताओं के साथ सीमित जानकारी</li>
+                <li>व्यापारिक हस्तांतरण की स्थिति में</li>
+            </ul>
+        </div>
+
+        <!-- User Rights -->
+        <div class="policy-section">
+            <h2 class="section-title">उपयोगकर्ता अधिकार</h2>
+            <ul class="policy-list">
+                <li>डेटा एक्सेस और संशोधन का अधिकार</li>
+                <li>डेटा हटाने का अनुरोध</li>
+                <li>सहमति वापस लेने का विकल्प</li>
+                <li>शिकायत दर्ज करने का अधिकार</li>
+            </ul>
+        </div>
+
+        <!-- Changes Notice -->
+        <div class="policy-section">
+            <h2 class="section-title">नीति में परिवर्तन</h2>
+            <ul class="policy-list">
+                <li>समय-समय पर नीति अद्यतन</li>
+                <li>महत्वपूर्ण परिवर्तनों पर ईमेल सूचना</li>
+                <li>नई नीति का स्वीकृत माना जाना</li>
+            </ul>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="policy-section" style="background: #2a2a2a;">
+            <h2 class="section-title">संपर्क करें</h2>
+            <p>प्रश्न या चिंताओं के लिए संपर्क करें:</p>
+            <p>ईमेल: <a href="mailto:privacy@videohub.com" style="color: #ff4444; text-decoration: none;">privacy@videohub.com</a></p>
+            <p>फोन: +91-XXXXXXXXXX</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2024 VideoHub. सर्वाधिकार सुरक्षित</p>
+        <p>इस नीति को किसी भी समय अपडेट किया जा सकता है</p>
+    </footer>
+</body>
+</html>
