@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>संपर्क करें - Video Hub</title>
+    <style>
+        /* Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        .header {
+            background: #111;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            color: #ff4444;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Main Content */
+        .contact-container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .contact-hero {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+        }
+
+        .contact-hero h1 {
+            color: #ff4444;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Layout */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            padding: 2rem;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: #1a1a1a;
+            padding: 2rem;
+            border-radius: 12px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #ff4444;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #333;
+            border-radius: 8px;
+            background: #2a2a2a;
+            color: #fff;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #ff4444;
+        }
+
+        button[type="submit"] {
+            background: #ff4444;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            transform: translateY(-2px);
+            background: #cc0000;
+        }
+
+        /* Contact Info */
+        .contact-info {
+            background: #1a1a1a;
+            padding: 2rem;
+            border-radius: 12px;
+        }
+
+        .info-card {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            border-radius: 8px;
+            background: #2a2a2a;
+            transition: transform 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateX(10px);
+        }
+
+        .info-icon {
+            font-size: 24px;
+            margin-right: 1.5rem;
+            color: #ff4444;
+        }
+
+        /* Map */
+        .map-container {
+            margin-top: 3rem;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+            
+            .contact-form,
+            .contact-info {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .info-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .info-icon {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            background: #111;
+            padding: 2rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .footer p {
+            color: #666;
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">VideoHub</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="contact-container">
+        <div class="contact-hero">
+            <h1>हमसे संपर्क करें</h1>
+            <p>किसी भी प्रश्न या सुझाव के लिए नीचे फॉर्म भरें</p>
+        </div>
+
+        <div class="contact-wrapper">
+            <!-- Contact Form -->
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">नाम *</label>
+                    <input type="text" id="name" required placeholder="आपका पूरा नाम">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">ईमेल *</label>
+                    <input type="email" id="email" required placeholder="example@domain.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">विषय</label>
+                    <input type="text" id="subject" placeholder="संदेश का विषय">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">संदेश *</label>
+                    <textarea id="message" rows="5" required placeholder="अपना संदेश यहाँ लिखें..."></textarea>
+                </div>
+
+                <button type="submit">संदेश भेजें</button>
+            </form>
+
+            <!-- Contact Info -->
+            <div class="contact-info">
+                <div class="info-card">
+                    <div class="info-icon">📍</div>
+                    <div>
+                        <h3>हमारा पता</h3>
+                        <p>123 gaya, Bihar<br> भारत</p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">📞</div>
+                    <div>
+                        <h3>फ़ोन नंबर</h3>
+                        <p>+91 9006971705<br>सोम-शनि (10AM - 6PM)</p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">✉️</div>
+                    <div>
+                        <h3>ईमेल</h3>
+                        <p>support@watch4k<br>vivekadirao@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Map -->
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.7558374706597!2d72.8325143143762!3d19.05250325833784!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c91130392c07%3A0x3d869b5d5e61f3f9!2sMumbai%20Tech%20Park!5e0!3m2!1sen!2sin!4v1657542345678!5m2!1sen!2sin" 
+                width="100%" 
+                height="300" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2024 VideoHub. सर्वाधिकार सुरक्षित</p>
+        <p>हमसे जुड़ें: contact@videohub.com</p>
+    </footer>
+</body>
+</html>
