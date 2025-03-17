@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5 Players with Quality Control</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #0f0f0f;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .control-panel {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 25px;
+            background: #1a1a1a;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .input-group {
+            margin: 15px 0;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        #videoUrl {
+            width: 100%;
+            max-width: 400px;
+            padding: 12px 20px;
+            border: 2px solid #ff4444;
+            border-radius: 30px;
+            background: #2a2a2a;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        #qualitySelect {
+            padding: 12px 20px;
+            border-radius: 30px;
+            background: #2a2a2a;
+            color: #fff;
+            border: 2px solid #ff4444;
+            cursor: pointer;
+        }
+
+        button {
+            background: #ff0000;
+            color: white;
+            padding: 12px 35px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: transform 0.2s ease;
+        }
+
+        button:hover {
+            background: #ff3333;
+            transform: scale(1.05);
+        }
+
+        .players-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            padding: 15px;
+        }
+
+        .player-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
+            transition: transform 0.3s ease;
+            border: 2px solid #333;
+        }
+
+        .player-wrapper:hover {
+            transform: scale(1.02);
+            border-color: #ff4444;
+        }
+
+        .player {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        @media (max-width: 768px) {
+            .players-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .input-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            #videoUrl, #qualitySelect, button {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="control-panel">
+            <div class="input-group">
+                <input type="text" id="videoUrl" 
+                       placeholder="YouTube लिंक पेस्ट करें...">
+                <select id="qualitySelect">
+                    <option value="hd1080">1080p HD</option>
+                    <option value="hd720">720p HD</option>
+                    <option value="large">480p</option>
+                    <option value="medium">360p</option>
+                    <option value="small">240p</option>
+                </select>
+                <button onclick="createPlayers()">5 प्लेयर चलाएं</button>
+            </div>
+        </div>
+        <div class="players-grid" id="playersGrid"></div>
+    </div>
+
+    <script>
+        function extractVideoId(url) {
+            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+            const match = url.match(regExp);
+            return (match && match[2].length === 11) ? match[2] : null;
+        }
+
+        function createPlayers() {
+            const videoUrl = document.getElementById('videoUrl').value;
+            const quality = document.getElementById('qualitySelect').value;
+            const videoId = extractVideoId(videoUrl);
+            const playersGrid = document.getElementById('playersGrid');
+            
+            if(!videoId) {
+                alert('कृपया सही YouTube लिंक डालें');
+                return;
+            }
+
+            playersGrid.innerHTML = '';
+
+            // 5 प्लेयर बनाएं
+            for(let i = 0; i < 5; i++) {
+                const playerHTML = `
+                    <div class="player-wrapper">
+                        <iframe class="player" 
+                            src="https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&rel=0&controls=1&vq=${quality}&loop=1&playlist=${videoId}" 
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                `;
+                playersGrid.innerHTML += playerHTML;
+            }
+
+            window.scrollTo({
+                top: playersGrid.offsetTop - 100,
+                behavior: 'smooth'
+            });
+        }
+
+        document.getElementById('videoUrl').addEventListener('keypress', function(e) {
+            if(e.key === 'Enter') createPlayers();
+        });
+    </script>
+</body>
+</html>
