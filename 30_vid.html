@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Multi Player with Quality</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #0f0f0f;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .control-panel {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #1c1c1c;
+            border-radius: 12px;
+            position: sticky;
+            top: 10px;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+            margin: 15px 0;
+        }
+
+        #videoUrl {
+            flex: 1;
+            max-width: 600px;
+            padding: 14px 25px;
+            border: 2px solid #ff4444;
+            border-radius: 30px;
+            background: #2a2a2a;
+            color: #fff;
+            font-size: 16px;
+            min-width: 300px;
+        }
+
+        #qualitySelect {
+            padding: 14px 25px;
+            border: 2px solid #444;
+            border-radius: 30px;
+            background: #2a2a2a;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #qualitySelect:hover {
+            border-color: #ff4444;
+        }
+
+        button {
+            background: linear-gradient(135deg, #ff3333, #cc0000);
+            color: white;
+            padding: 14px 45px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: transform 0.2s ease;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255,0,0,0.3);
+        }
+
+        .players-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 15px;
+        }
+
+        .player-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #000;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        }
+
+        .player {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        @media (max-width: 768px) {
+            .input-group {
+                flex-direction: column;
+            }
+            
+            #videoUrl, #qualitySelect, button {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="control-panel">
+            <div class="input-group">
+                <input type="text" id="videoUrl" 
+                       placeholder="YouTube लिंक यहाँ पेस्ट करें...">
+                <select id="qualitySelect">
+                    <option value="default">डिफ़ॉल्ट क्वालिटी</option>
+                    <option value="hd1080">1080p</option>
+                    <option value="hd720">720p</option>
+                    <option value="large">480p</option>
+                    <option value="medium">360p</option>
+                    <option value="small">240p</option>
+                    <option value="tiny">144p</option>
+                </select>
+                <button onclick="createPlayers()">प्लेयर बनाएं</button>
+            </div>
+        </div>
+        <div class="players-grid" id="playersGrid"></div>
+    </div>
+
+    <script>
+        function extractVideoId(url) {
+            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+            const match = url.match(regExp);
+            return (match && match[2].length === 11) ? match[2] : null;
+        }
+
+        function createPlayers() {
+            const videoUrl = document.getElementById('videoUrl').value;
+            const quality = document.getElementById('qualitySelect').value;
+            const videoId = extractVideoId(videoUrl);
+            const playersGrid = document.getElementById('playersGrid');
+            
+            if(!videoId) {
+                alert('कृपया सही YouTube लिंक डालें');
+                return;
+            }
+
+            playersGrid.innerHTML = '';
+
+            // Quality parameter
+            const qualityParam = quality === 'default' ? '' : `&vq=${quality}`;
+
+            for(let i = 0; i < 30; i++) {
+                const playerHTML = `
+                    <div class="player-wrapper">
+                        <iframe class="player" 
+                            src="https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&rel=0&controls=0&loop=1&playlist=${videoId}${qualityParam}"
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                `;
+                playersGrid.innerHTML += playerHTML;
+            }
+
+            window.scrollTo({
+                top: playersGrid.offsetTop - 100,
+                behavior: 'smooth'
+            });
+        }
+
+        document.getElementById('videoUrl').addEventListener('keypress', function(e) {
+            if(e.key === 'Enter') createPlayers();
+        });
+    </script>
+</body>
+</html>
